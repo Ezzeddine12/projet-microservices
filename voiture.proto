@@ -1,0 +1,38 @@
+syntax = "proto3";
+package voiture;
+// Définition du message voiture
+message voiture {
+string id = 1;
+string title = 2;
+string description = 3;
+// Ajouter d'autres champs de données pour les films au besoin
+}
+// Définition des messages de requête et de réponse pour les méthodes d
+message GetvoitureRequest {
+string voiture_id = 1;
+}
+message GetvoitureResponse {
+voiture voiture = 1;
+}
+message SearchvoituresRequest {
+string query = 1;
+}
+message SearchvoituresResponse {
+repeated voiture voitures = 1;
+}
+
+message AddvoitureRequest {
+    string title = 1;
+    string description = 2;
+}
+
+message AddvoitureResponse {
+    voiture voiture = 1;
+}
+// Définition du service de films
+service voitureService {
+rpc Getvoiture(GetvoitureRequest) returns (GetvoitureResponse);
+rpc Searchvoitures(SearchvoituresRequest) returns (SearchvoituresResponse);
+rpc Addvoiture(AddvoitureRequest) returns (AddvoitureResponse);
+// Ajouter d'autres méthodes au besoin
+}
